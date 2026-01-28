@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TA/DA Request Generator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="bubble-container">
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+  <div class="bubble"></div>
+</div>
+
+<div class="controls">
+  <h2>TA / DA Request Letter Generator</h2>
+
+  <label>Student Representative</label>
+  <select id="representative">
+    <option>General Secretary</option>
+    <option>Secretary – TC</option>
+    <option>Cultural Secretary</option>
+    <option>Sports Secretary</option>
+  </select>
+
+  <label>Event Name</label>
+  <input type="text" id="event" placeholder="Hack With Mumbai 2.0" value="Hack With Mumbai 2.0">
+
+  <label>Venue (Location)</label>
+  <input type="text" id="venue" placeholder="Mumbai" value="Bharati Vidyapeeth (Deemed to be University), Kharghar, Navi Mumbai">
+
+  <label>Event Date (From)</label>
+  <input type="date" id="dateFrom" value="2026-02-07">
+
+  <label>Event Date (To)</label>
+  <input type="date" id="dateTo" value="2026-02-08">
+
+  <label>No. of Students</label>
+  <input type="number" id="students" value="4" min="1" oninput="calculateTotal()">
+
+  <button onclick="generateLetter()">Generate Letter</button>
+  <button onclick="downloadPDF()">Download PDF</button>
+</div>
+
+<hr>
+
+<div class="letter" id="letter">
+
+  <div class="header">
+    <table class="headerTable">
+      <tr>
+        <td class="logo-cell">
+          <img src="gmulogo1.png" alt="GM University Logo" class="logo-image">
+        </td>
+        <td class="title-cell">
+          <p style="color: red; margin: 1px 0; font-size: 12px;"><u>Srichyla</u> Educational Trust <u>S. Bheemassmudra</u></p>
+          <h1>GM UNIVERSITY</h1>
+          <p style="font-size: 12px; margin: 1px 0;">(Established under the Karnataka State Act No. 19 of 2023)</p>
+          <p style="font-weight: bold; margin: 1px 0; font-size: 13px;">Department of Student Affairs</p>
+        </td>
+      </tr>
+    </table>
+    <hr style="border-top: 2px solid black; margin: 3px 0;">
+  </div>
+
+  <div class="letterContent">
+    <div class="letterHead">
+      <div style="float: left;">
+        <p style="font-size: 13px; margin: 0px 0;"><b>To</b></p>
+        <p style="font-size: 13px; margin: 0px 0;">Pro Vice Chancellor</p>
+        <p style="font-size: 13px; margin: 0px 0;">GM University, Davanagere</p>
+      </div>
+      <div style="float: right; text-align: right;">
+        <p style="font-size: 13px; margin: 0px 0;"><b>Date:</b> <span id="date"></span></p>
+      </div>
+      <div style="clear: both;"></div>
+    </div>
+
+    <p style="margin-top: 4px; margin-bottom: 4px; font-size: 14px;"><b>Subject: Request for Sanction of TA/DA Pre-Budget – Participation in Hack With Mumbai 2.0 National Level Hackathon</b></p>
+
+    <p style="text-align: justify; line-height: 1.5; font-size: 13px; margin-bottom: 3px;">Respected Sir,</p>
+
+    <p style="text-align: justify; line-height: 1.5; font-size: 13px; margin-bottom: 3px;">
+      The students of GM University intend to participate in <b><span id="eventName">Hack With Mumbai 2.0</span></b>, 
+      a 30-hour National Level Offline Hackathon organized by <span id="eventVenue">Bharati Vidyapeeth (Deemed to be University), Kharghar, Navi Mumbai</span>, 
+      scheduled on <span id="eventDates">7th and 8th February 2026</span>.
+    </p>
+
+    <p style="text-align: justify; line-height: 1.5; font-size: 13px; margin-bottom: 3px;">
+      In this regard, we are submitting the <b>TA/DA pre-budget estimate</b> for your kind consideration and necessary approval.
+    </p>
+
+    <table class="budgetTable">
+      <thead>
+        <tr>
+          <th>Sl.No</th>
+          <th>Particulars</th>
+          <th>Cost</th>
+          <th>Amount in Rs</th>
+          <th>Account details</th>
+        </tr>
+      </thead>
+      <tbody id="tadaBody">
+        <tr>
+          <td>1</td>
+          <td contenteditable="true">Registration fee</td>
+          <td><input type="number" id="cost1" value="500" oninput="calculateRow(this)"> X <input type="number" id="qty1" value="4" oninput="calculateRow(this)"></td>
+          <td class="amount">2000=00</td>
+          <td rowspan="4" style="vertical-align: top; padding: 1px;">
+            <input type="text" class="account" placeholder="Account Holder Name" value="Yashwanth V S"><br>
+            <input type="text" class="account" placeholder="Account Type" value="A/C"><br>
+            <input type="text" class="account" placeholder="Account No." value="no.40943659509"><br>
+            <input type="text" class="account" placeholder="IFSC" value="IFSC:SRIN0014951">
+          </td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td contenteditable="true">TA (Dvg to Mumbai to Dvg) students</td>
+          <td><input type="number" id="cost2" value="1400" oninput="calculateRow(this)"> X <input type="number" id="qty2" value="4" oninput="calculateRow(this)"></td>
+          <td class="amount">5600=00</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td contenteditable="true">DA</td>
+          <td><input type="number" id="cost3" value="300" oninput="calculateRow(this)"> X <input type="number" id="qty3" value="4" oninput="calculateRow(this)"></td>
+          <td class="amount">3600=00</td>
+        </tr>
+        <tr>
+          <td>4</td>
+          <td contenteditable="true">Local travelling allowance</td>
+          <td><input type="number" id="cost4" value="500" oninput="calculateRow(this)"> X <input type="number" id="qty4" value="4" oninput="calculateRow(this)"></td>
+          <td class="amount">2000=00</td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="3" style="text-align: right; font-weight: bold;">Total</td>
+          <td id="grandTotal" style="font-weight: bold;">13,200=00</td>
+          <td></td>
+        </tr>
+      </tfoot>
+    </table>
+
+    <div class="signatures">
+      <table class="signTable">
+        <tr>
+          <td style="text-align: center; width: 25%;"><span style="font-size: 14px; display: block; letter-spacing: 2px;">___________</span><span id="representativeSign" style="font-size: 12px; display: block; margin-top: 4px; font-weight: bold;">General Secretary</span></td>
+          <td style="text-align: center; width: 25%;"><span style="font-size: 14px; display: block; letter-spacing: 2px;">___________</span><span style="font-size: 12px; display: block; margin-top: 4px; font-weight: bold;">Ass.Director-SA</span></td>
+          <td style="text-align: center; width: 25%;"><span style="font-size: 14px; display: block; letter-spacing: 2px;">___________</span><span style="font-size: 12px; display: block; margin-top: 4px; font-weight: bold;">Director-SA</span></td>
+          <td style="text-align: center; width: 25%;"><span style="font-size: 14px; display: block; letter-spacing: 2px;">___________</span><span style="font-size: 12px; display: block; margin-top: 4px; font-weight: bold;">Pro Vice Chancellor</span></td>
+        </tr>
+      </table>
+    </div>
+
+  </div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<script src="script.js"></script>
+
+</body>
+</html>

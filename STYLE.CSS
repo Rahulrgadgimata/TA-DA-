@@ -1,0 +1,726 @@
+html, body, * {
+  font-family: 'Times New Roman', serif;
+}
+
+body {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  padding: 20px;
+  color: #333;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.controls {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  width: 90%;
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 25px;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+@media (max-width: 768px) {
+  .controls {
+    width: 95%;
+    padding: 20px;
+    margin: 15px auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .controls {
+    width: 98%;
+    padding: 15px;
+    margin: 10px auto;
+  }
+}
+
+.controls:hover {
+  transform: none;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.controls h2 {
+  margin-bottom: 20px;
+  color: #333;
+  font-size: 20px;
+  text-align: center;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.controls label {
+  display: block;
+  font-weight: 600;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  color: #555;
+  font-size: 13px;
+}
+
+.controls input, .controls select {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: 'Times New Roman', serif;
+  background: #fff;
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.controls input:focus, .controls select:focus {
+  outline: none;
+  border-color: #667eea;
+  background-color: #fff;
+  box-shadow: 0 0 0 2px rgba(102, 126, 234, 0.1);
+  transform: none;
+}
+
+.controls button {
+  width: 100%;
+  padding: 12px 20px;
+  margin-top: 10px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.controls button:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.controls button:hover:before {
+  left: 100%;
+}
+
+.controls button:hover {
+  transform: none;
+  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.3);
+}
+
+.controls button:first-of-type {
+  background: linear-gradient(135deg, #2196F3 0%, #1976D2 100%);
+}
+
+.controls button:first-of-type:hover {
+  box-shadow: 0 4px 20px rgba(33, 150, 243, 0.3);
+}
+
+hr {
+  margin: 30px 0;
+  border: none;
+  border-top: 2px solid rgba(255, 255, 255, 0.3);
+  position: relative;
+}
+
+hr:after {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+}
+
+/* A4 Letter Format */
+.letter {
+  background: white;
+  width: 210mm;
+  height: 297mm;
+  max-width: 100%;
+  margin: 20px auto;
+  padding: 10mm 12mm 10mm 12mm;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+  line-height: 1.5;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: 'Times New Roman', serif;
+  font-size: 14px;
+  border-radius: 10px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.letter:hover {
+  transform: none;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 768px) {
+  .letter {
+    width: 100%;
+    height: auto;
+    min-height: 297mm;
+    margin: 10px auto;
+    padding: 12mm 10mm 12mm 10mm;
+    border-radius: 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .letter {
+    padding: 8mm 8mm 8mm 8mm;
+  }
+}
+
+@media (max-width: 320px) {
+  .letter {
+    padding: 5mm 5mm 5mm 5mm;
+    font-size: 12px;
+  }
+
+  .title-cell h1 {
+    font-size: 20px;
+  }
+
+  .controls {
+    width: 100%;
+    padding: 10px;
+    margin: 5px auto;
+  }
+
+  .controls h2 {
+    font-size: 16px;
+  }
+
+  .controls input, .controls select {
+    padding: 10px 12px;
+    font-size: 12px;
+  }
+
+  .controls button {
+    padding: 10px 15px;
+    font-size: 12px;
+  }
+}
+
+.header {
+  margin-bottom: 3px;
+  flex-shrink: 0;
+  padding-bottom: 2px;
+  border-bottom: 2px solid black;
+}
+
+.headerTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.headerTable td {
+  border: none;
+  padding: 3px;
+  vertical-align: top;
+}
+
+.logo-cell {
+  width: 10%;
+  text-align: center;
+  vertical-align: middle;
+  padding-right: 10px;
+}
+
+.logo-image {
+  width: 60px;
+  height: 60px;
+  display: block;
+}
+
+@media (max-width: 768px) {
+  .logo-image {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+.title-cell {
+  width: 90%;
+  text-align: center;
+  padding-left: 10px;
+}
+
+.title-cell h1 {
+  font-size: 32px;
+  margin: 1px 0;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+}
+
+@media (max-width: 768px) {
+  .title-cell h1 {
+    font-size: 24px;
+  }
+}
+
+.title-cell p {
+  font-family: 'Times New Roman', serif;
+  font-size: 13px;
+  margin: 1px 0;
+  line-height: 1.2;
+}
+
+.letterContent {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  gap: 0;
+  font-family: 'Times New Roman', serif;
+}
+
+.letterHead {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 5px;
+  margin-top: 0px;
+  flex-shrink: 0;
+}
+
+.letterHead div {
+  font-family: 'Times New Roman', serif;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.letterHead p {
+  margin: 0px 0;
+}
+@media (max-width: 768px) {
+  .letterHead {
+    flex-direction: column;
+  }
+
+  .letterHead div {
+    margin-bottom: 8px;
+  }
+
+  .letterHead div:last-child {
+    margin-bottom: 0;
+  }
+}
+.letterContent > p {
+  font-family: 'Times New Roman', serif;
+  margin-bottom: 5px;
+  font-size: 15px;
+  line-height: 1.5;
+  flex-shrink: 0;
+  margin-top: 0;
+}
+
+.letterContent b {
+  font-weight: bold;
+}
+
+.budgetTable {
+  font-family: 'Times New Roman', serif;
+  width: 100%;
+  border-collapse: collapse;
+  margin: 4px 0 3px 0;
+  font-size: 12px;
+  flex-shrink: 0;
+}
+
+.budgetTable, .budgetTable th, .budgetTable td {
+  border: 1px solid #000;
+}
+
+.budgetTable th {
+  font-family: 'Times New Roman', serif;
+  background-color: #f0f0f0;
+  padding: 4px 3px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 12px;
+  height: 18px;
+}
+
+.budgetTable td {
+  font-family: 'Times New Roman', serif;
+  padding: 4px 3px;
+  text-align: center;
+  height: auto;
+  font-size: 12px;
+}
+
+@media print {
+  .budgetTable, .budgetTable th, .budgetTable td {
+    border: 1px solid #000;
+  }
+}
+
+.budgetTable td:nth-child(2) {
+  text-align: left;
+  padding-left: 8px;
+}
+
+.budgetTable td:nth-child(5) {
+  font-family: 'Times New Roman', serif;
+  text-align: left;
+  padding-left: 6px;
+  font-size: 12px;
+}
+
+.budgetTable input[type="number"] {
+  font-family: 'Times New Roman', serif;
+  width: 40px;
+  padding: 3px 3px;
+  border: 1px solid #999;
+  font-size: 12px;
+  text-align: center;
+}
+
+.budgetTable input.account {
+  font-family: 'Times New Roman', serif;
+  width: 100%;
+  padding: 2px 2px;
+  border: none;
+  border-bottom: 0.5px solid #999;
+  font-size: 13px;
+  margin-bottom: 3px;
+  text-align: left;
+  background: transparent;
+  line-height: 1.3;
+}
+
+@media print {
+  .budgetTable input[type="number"] {
+    border: none;
+    background: transparent;
+  }
+
+  .budgetTable input.account {
+    border: none;
+    border-bottom: 1px solid #000 !important;
+    background: transparent;
+    padding: 1px 0;
+    margin: 1px 0;
+  }
+}
+
+.amount {
+  font-weight: bold;
+  min-width: 70px;
+}
+
+.signatures {
+  margin-top: auto;
+  padding-top: 8px;
+  flex-shrink: 0;
+}
+
+.signTable {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.signTable td {
+  font-family: 'Times New Roman', serif;
+  border: none;
+  padding: 3px 3px;
+  text-align: center;
+  font-size: 12px;
+  vertical-align: bottom;
+  word-break: break-word;
+}
+
+@media print {
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-shadow: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+
+  body {
+    background: white;
+    width: 210mm;
+    height: 297mm;
+    overflow: hidden;
+    font-family: 'Times New Roman', serif;
+  }
+
+  .controls,
+  .bubble-container,
+  hr {
+    display: none !important;
+  }
+
+  /* A4 PAGE */
+  .letter {
+    width: 210mm;
+    height: 297mm;
+    margin: 0;
+    padding: 12mm 15mm 12mm 15mm;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: 0;
+    font-family: 'Times New Roman', serif;
+  }
+
+  /* HEADER */
+  .logo-image {
+    width: 65px;
+    height: 65px;
+  }
+
+  .title-cell h1 {
+    font-size: 28px;
+    font-weight: bold;
+    margin: 1px 0;
+    font-family: 'Times New Roman', serif;
+  }
+
+  .title-cell p {
+    font-size: 12px;
+    margin: 1px 0;
+    font-family: 'Times New Roman', serif;
+  }
+
+  .header {
+    border-bottom: 2px solid black;
+    padding-bottom: 4px;
+    margin-bottom: 8px;
+  }
+
+  /* LETTER BODY */
+  .letterHead div,
+  .letterContent p {
+    font-size: 14px;
+    line-height: 1.5;
+    font-family: 'Times New Roman', serif;
+  }
+
+  .letterContent p {
+    margin-bottom: 6px;
+    text-align: justify;
+  }
+
+  .subject {
+    font-size: 15px;
+    font-weight: bold;
+    margin: 8px 0;
+    font-family: 'Times New Roman', serif;
+  }
+
+  /* TABLE */
+  .budgetTable {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 8px;
+    font-size: 13px;
+    font-family: 'Times New Roman', serif;
+  }
+
+  .budgetTable th,
+  .budgetTable td {
+    border: 1px solid black;
+    padding: 5px;
+    text-align: center;
+    font-family: 'Times New Roman', serif;
+  }
+
+  .budgetTable th {
+    font-weight: bold;
+    background-color: #f0f0f0;
+    border: 1px solid black;
+  }
+
+  .budgetTable td:nth-child(2),
+  .budgetTable td:nth-child(5) {
+    text-align: left;
+  }
+
+  .budgetTable input[type="number"],
+  .budgetTable input.account {
+    border: none;
+    background: transparent;
+    font-family: 'Times New Roman', serif;
+  }
+
+  .budgetTable input.account {
+    border-bottom: 1px solid #000 !important;
+    padding: 0 2px;
+    margin: 0;
+  }
+
+  /* SIGNATURES */
+  .signatures {
+    margin-top: auto;
+    padding-top: 15px;
+    page-break-inside: avoid;
+  }
+
+  .signTable {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  .signTable td {
+    font-size: 12px;
+    padding-top: 30px;
+    text-align: center;
+    font-family: 'Times New Roman', serif;
+    border: none;
+    word-break: break-word;
+  }
+
+  .signTable span {
+    display: block;
+    font-family: 'Times New Roman', serif;
+  }
+}
+
+
+/* Bubble Animation Background */
+.bubble-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.bubble {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  animation: float-up 8s infinite ease-in-out;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.bubble:nth-child(1) {
+  width: 80px;
+  height: 80px;
+  left: 10%;
+  animation-delay: 0s;
+  animation-duration: 10s;
+}
+
+.bubble:nth-child(2) {
+  width: 120px;
+  height: 120px;
+  left: 20%;
+  animation-delay: 2s;
+  animation-duration: 12s;
+}
+
+.bubble:nth-child(3) {
+  width: 60px;
+  height: 60px;
+  left: 35%;
+  animation-delay: 4s;
+  animation-duration: 8s;
+}
+
+.bubble:nth-child(4) {
+  width: 100px;
+  height: 100px;
+  left: 50%;
+  animation-delay: 1s;
+  animation-duration: 15s;
+}
+
+.bubble:nth-child(5) {
+  width: 90px;
+  height: 90px;
+  left: 65%;
+  animation-delay: 3s;
+  animation-duration: 11s;
+}
+
+.bubble:nth-child(6) {
+  width: 70px;
+  height: 70px;
+  left: 80%;
+  animation-delay: 5s;
+  animation-duration: 9s;
+}
+
+.bubble:nth-child(7) {
+  width: 110px;
+  height: 110px;
+  left: 90%;
+  animation-delay: 2.5s;
+  animation-duration: 13s;
+}
+
+/* Animations */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float-up {
+  0% {
+    transform: translateY(100vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.4;
+  }
+  90% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(-100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+/* Enhanced input animations */
+.controls input:hover, .controls select:hover {
+  border-color: rgba(102, 126, 234, 0.4);
+  transform: translateY(-1px);
+}
+
+/* Smooth transitions for all interactive elements */
+* {
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
